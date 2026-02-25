@@ -1,0 +1,45 @@
+name: Build CV PDF
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: typst-community/setup-typst@v4
+        with:
+          typst-version: "0.14.2"
+
+      - name: Compile CV
+        run: |
+          mkdir -p output
+          typst compile cv.typ output/cv-en.pdf
+
+      - name: Generate preview image
+        run: typst compile cv.typ "output/preview-{p}.png" --format png --ppi 150
+
+      - name: Upload PDFs as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: cv-pdfs
+          path: output/*
+
+      - name: Create/Update Release
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Latest CV
+          files: |
+            output/cv-en.pdf
+            output/preview-*.png
+          make_latest: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,8 @@
+output/*.pdf
+output/*.png
+.typst/
+.DS_Store
+Thumbs.db
+.vscode/
+*.swp
+*~
