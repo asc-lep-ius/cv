@@ -31,7 +31,7 @@
     paper: "a4",
     margin: (top: 1.8cm, bottom: 1.5cm, left: 1.8cm, right: 1.8cm),
   )
-  set text(font: "Libertinus Serif", size: 10pt, fill: luma(30))
+  set text(font: "Inter", size: 10pt, fill: luma(30))
   set par(justify: true, leading: 0.65em)
 
   show heading.where(level: 1): it => {

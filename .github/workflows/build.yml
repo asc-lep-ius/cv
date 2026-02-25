@@ -20,10 +20,10 @@ jobs:
       - name: Compile CV
         run: |
           mkdir -p output
-          typst compile cv.typ output/cv-en.pdf
+          typst compile --font-path fonts/ cv.typ output/cv-en.pdf
 
       - name: Generate preview image
-        run: typst compile cv.typ "output/preview-{p}.png" --format png --ppi 150
+        run: typst compile --font-path fonts/ cv.typ "output/preview-{p}.png" --format png --ppi 150
 
       - name: Upload PDFs as artifacts
         uses: actions/upload-artifact@v4
