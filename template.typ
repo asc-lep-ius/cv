@@ -1,6 +1,3 @@
-// CV Template — Clean, ATS-friendly, Austrian-convention compatible
-// Designed for 1–2 page tech CVs
-
 #let accent-color-default = rgb("#2563eb")
 
 #let icon-map = (
@@ -29,63 +26,86 @@
   set document(title: name + " — CV", author: name)
   set page(
     paper: "a4",
-    margin: (top: 1.8cm, bottom: 1.5cm, left: 1.8cm, right: 1.8cm),
+    margin: (top: 1.4cm, bottom: 1.2cm, left: 1.6cm, right: 1.6cm),
+    header: {
+      place(top + left, dx: -1.6cm, dy: -1.4cm,
+        rect(width: 100% + 3.2cm, height: 3pt, fill: accent-color)
+      )
+    },
   )
-  set text(font: "Inter", size: 10pt, fill: luma(30))
-  set par(justify: true, leading: 0.65em)
+  set text(font: "Inter", size: 9.5pt, fill: luma(30))
+  set par(justify: true, leading: 0.6em)
 
   show heading.where(level: 1): it => {
     text(size: 22pt, weight: "bold", fill: accent-color, it.body)
   }
 
   show heading.where(level: 2): it => {
-    v(0.6em)
+    v(0.45em)
     block(width: 100%, {
-      text(size: 12pt, weight: "bold", fill: accent-color, upper(it.body))
-      v(-0.3em)
+      text(size: 11pt, weight: "bold", fill: accent-color, upper(it.body))
+      v(-0.35em)
       line(length: 100%, stroke: 0.5pt + accent-color)
     })
-    v(0.3em)
+    v(0.2em)
   }
 
   show heading.where(level: 3): it => {
-    v(0.2em)
-    text(size: 10pt, weight: "bold", fill: luma(40), it.body)
+    v(0.15em)
+    text(size: 9.5pt, weight: "bold", fill: luma(40), it.body)
   }
 
-  set list(indent: 0.4em, body-indent: 0.5em, marker: text(fill: accent-color, "▸"))
+  set list(indent: 0.3em, body-indent: 0.4em, spacing: 0.55em, marker: text(fill: accent-color, "▸"))
 
-  // --- Header ---
   block(width: 100%, {
     align(center, {
-      text(size: 24pt, weight: "bold", fill: luma(20), name)
-      v(-0.3em)
-      text(size: 12pt, fill: luma(80), tagline)
-      v(0.4em)
+      text(size: 22pt, weight: "bold", fill: luma(20), name)
+      v(-0.25em)
+      text(size: 11pt, fill: luma(80), tagline)
+      v(0.35em)
 
       let contact-items = contact.map(c => {
         let ico = icon-map.at(c.icon, default: "•")
-        text(size: 9pt, fill: luma(60), {
+        text(size: 8pt, fill: luma(60), {
           text(weight: "bold", fill: accent-color, ico)
-          h(0.2em)
+          h(0.1em)
           c.text
         })
       })
-      contact-items.join(h(0.8em) + text(fill: luma(180), "|") + h(0.8em))
+      contact-items.join(h(0.4em) + text(size: 8pt, fill: luma(180), "|") + h(0.4em))
 
       if date-of-birth != none or nationality != none {
-        v(0.2em)
+        v(0.15em)
         let extras = ()
         if date-of-birth != none { extras.push("Born: " + date-of-birth) }
         if nationality != none { extras.push("Nationality: " + nationality) }
-        text(size: 9pt, fill: luma(100), extras.join("  ·  "))
+        text(size: 8.5pt, fill: luma(100), extras.join("  ·  "))
       }
     })
   })
 
-  v(0.5em)
+  v(0.3em)
 
   body
+}
+
+#let metrics-bar(accent-color: accent-color-default, ..items) = {
+  let pairs = items.pos()
+  let count = pairs.len()
+  v(0.1em)
+  block(width: 100%, inset: (x: 0.4em, y: 0.5em), radius: 3pt, fill: accent-color.lighten(93%), stroke: 0.5pt + accent-color.lighten(70%), {
+    grid(
+      columns: (1fr,) * count,
+      align: center,
+      ..pairs.map(((value, label)) => {
+        stack(dir: ttb, spacing: 0.35em,
+          text(size: 12pt, weight: "bold", fill: accent-color, value),
+          text(size: 7.5pt, fill: luma(80), upper(label)),
+        )
+      })
+    )
+  })
+  v(0.15em)
 }
 
 #let experience(
@@ -98,15 +118,15 @@
   block(width: 100%, {
     grid(
       columns: (1fr, auto),
-      text(weight: "bold", size: 11pt, fill: luma(20), role + " — " + company),
+      text(weight: "bold", size: 10.5pt, fill: luma(20), role + " — " + company),
       align(right, text(size: 9pt, fill: luma(100), dates)),
     )
     if location != "" {
-      text(size: 9pt, fill: luma(100), location)
+      text(size: 8.5pt, fill: luma(100), location)
     }
     if description != none {
-      v(0.1em)
-      text(size: 9pt, style: "italic", fill: luma(80), description)
+      v(0.05em)
+      text(size: 8.5pt, style: "italic", fill: luma(80), description)
     }
   })
 }
@@ -124,38 +144,37 @@
       text(weight: "bold", size: 10pt, fill: luma(20), degree),
       align(right, text(size: 9pt, fill: luma(100), dates)),
     )
-    text(size: 9.5pt, fill: luma(60), institution + " · " + location)
+    text(size: 9pt, fill: luma(60), institution + " · " + location)
     if details != none {
-      v(0.1em)
-      text(size: 9pt, fill: luma(80), details)
+      v(0.05em)
+      text(size: 8.5pt, fill: luma(80), details)
     }
   })
 }
 
-#let skills-grid(..items) = {
+#let skills-grid(accent-color: accent-color-default, ..items) = {
   let pairs = items.pos()
   for (category, skills) in pairs {
     grid(
-      columns: (4.2cm, 1fr),
-      gutter: 0.2em,
-      text(size: 9pt, weight: "bold", fill: luma(60), category),
-      text(size: 9.5pt, fill: luma(30), skills),
+      columns: (3.6cm, 1fr),
+      gutter: 0.15em,
+      text(size: 8.5pt, weight: "bold", fill: accent-color.darken(20%), category),
+      text(size: 9pt, fill: luma(30), skills),
     )
-    v(0.1em)
+    v(0.05em)
   }
 }
 
 #let languages(..items) = {
   let pairs = items.pos()
-  for (lang, level) in pairs {
-    grid(
-      columns: (4.2cm, 1fr),
-      gutter: 0.2em,
-      text(size: 10pt, weight: "bold", fill: luma(40), lang),
-      text(size: 10pt, fill: luma(60), level),
-    )
-    v(0.1em)
-  }
+  grid(
+    columns: (3.6cm, 1fr),
+    gutter: 0.45em,
+    ..pairs.map(((lang, level)) => (
+      text(size: 9.5pt, weight: "bold", fill: luma(40), lang),
+      text(size: 9.5pt, fill: luma(60), level),
+    )).flatten()
+  )
 }
 
 #let project(
@@ -166,11 +185,11 @@
   block(width: 100%, {
     grid(
       columns: (auto, 1fr),
-      gutter: 0.4em,
-      text(weight: "bold", size: 10pt, fill: luma(20), name),
-      align(right, text(size: 8.5pt, fill: luma(100), tech)),
+      gutter: 0.3em,
+      text(weight: "bold", size: 9.5pt, fill: luma(20), name),
+      align(right, text(size: 8pt, fill: luma(100), tech)),
     )
-    text(size: 9pt, fill: luma(50), description)
+    text(size: 8.5pt, fill: luma(50), description)
   })
-  v(0.2em)
+  v(0.15em)
 }
