@@ -1,118 +1,127 @@
-// Maximilian Ipkovich — CV
+// Maximilian Ipkovich CV
 // Built with Typst · https://typst.app
 
 #import "template.typ": *
 
 #show: cv.with(
   name: "Maximilian Ipkovich",
-  tagline: "Software Engineer — AI & Platform Engineering",
+  tagline: "Software Engineer | AI, Backend & Quality Assurance",
   contact: (
-    (icon: "envelope", text: "max.ipkovich@gmail.com"),
-    (icon: "phone", text: "+43 XXX XXX XXXX"),
+    (icon: "envelope", text: "maximilian.ipkovich@gmail.com"),
+    (icon: "phone", text: "+436644075399"),
     (icon: "location", text: "Vienna, Austria"),
-    (icon: "linkedin", text: "linkedin.com/in/maximilian-ipkovich"),
     (icon: "github", text: "github.com/asc-lep-ius"),
   ),
-  // date-of-birth: "DD.MM.YYYY",
+  // date-of-birth: "1999.08.23",
   // nationality: "Austrian",
   accent-color: rgb("#2563eb"),
 )
 
+#metrics-bar(
+  ("56", "Merged MRs"),
+  ("250+", "Issues Authored"),
+  ("500+", "Review Comments"),
+  ("3.5y", "Tenure"),
+)
+
 == Professional Summary
 
-Software Engineer with 3.5 years of experience building AI-powered financial document processing systems at Finmatics (Visma Group). Full-stack expertise across Python/Django backend, Angular frontend, and FastAPI microservices, with hands-on LLM integration (Google Gemini) and Kubernetes platform engineering. Proven track record of delivering production systems processing thousands of invoices daily, with strong contributions to code quality (250+ issues authored, 500+ code review comments).
+3.5 years at Finmatics (Visma Group), an Austrian AI/FinTech company that automates invoice processing for accounting firms and enterprises. My repsonsibilities include LLM-integrated microservices (Google Gemini), Monolith Django backend, and platform engineering. Built multi-agent AI dev tooling and a custom MCP server for smoke and API testing. 500+ review actions, 250+ authored technical specs.
 
 == Work Experience
 
 #experience(
-  role: "Software Engineer",
+  role: "Quality Control Engineer & Developer",
   company: "Finmatics GmbH (Visma Group)",
   location: "Vienna, Austria",
-  dates: "Sep 2022 – Feb 2026",
-  description: "AI-powered financial document processing platform for accounting firms and enterprises. Evolved from technical support to full-stack platform engineering.",
+  dates: "May 2023 – Present",
+  description: "Progressed from automation engineering and internal tooling to platform-level backend development, AI/LLM microservice integration, and CI/CD infrastructure across Django and FastAPI.",
+)
+
+#experience(
+  role: "Application Support Engineer",
+  company: "Finmatics GmbH (Visma Group)",
+  location: "Vienna, Austria",
+  dates: "Sep 2022 – May 2023",
+  description: "2nd level technical support for enterprise accounting clients. Investigated and documented 130+ customer-reported issues with root cause analysis, contributing to 147 identified bugs and 57 feature requests.",
 )
 
 === AI/ML & Microservices #dates-right[2025 – 2026]
 
-- Owned the *Content Split Service* — FastAPI microservice using Google Gemini LLM for automated invoice line item splitting with retry logic, selective caching, and structured output parsing
-- Architected error propagation and observability (Sentry alerts, InvoiceEvent logging) for AI pipeline monitoring
-- Investigated BRAID structured prompting methodology (arXiv:2512.15959) for 2–3× accuracy improvement in LLM content extraction
-- Built custom *MCP Server* (14 tools, 2,000+ lines) enabling AI assistants to run E2E API tests through natural language
+- Contributed to the *Content Split Service*, a FastAPI microservice using Google Gemini LLM for automated invoice line item splitting across thousands of enterprise invoices
+- Added selective caching, exponential-backoff retries, and proper error propagation to the LLM pipeline, fixing persistent failures caused by transient Gemini API errors
+- Set up end-to-end observability: Sentry alerts on failures, InvoiceEvent logging for debugging, OpenTelemetry spans for distributed tracing of retry patterns
+- Created the *Finmatics MCP Server* (14 tools, 2,000+ lines, 54 commits) so AI assistants can run E2E API tests via natural language, replacing manual UI and Postman/curl workflows for staging deployments by QC and PM Teams
 
 === Platform Engineering & CI/CD #dates-right[2024 – 2026]
 
-- Designed and maintained *GitLab CI Release Bot* — automated release note generation, cross-project issue association, and deployment validation
-- Reduced CI log volume by ~90% through selective observability module configuration, solving test debugging truncation issues
-- Managed Kubernetes deployments via Helm charts across development, release, and production environments
-- Designed multi-agent AI development workspace orchestrating Cursor, Claude Code, and VS Code Copilot with 8 specialized agents and 11 shared skills
+- Designed and maintained the *GitLab CI Release Bot*: blocks MRs missing a Jira issue, handles cross-project issue association and deployment validation, cutting manual release overhead for the team
+- Cut CI log volume by ~90% with selective observability config, fixing 10MB log limit truncation that was blocking test debugging
+- Contributed to the *Agentic Workspace*, a multi-agent AI dev platform with 8 specialized agents and 11 shared skills running across Cursor, Claude Code, and VS Code Copilot (1000+ lines of agent/skill code)
 
-=== Backend Development #dates-right[2023 – 2026]
+=== Backend Development (Django) #dates-right[2023 – 2026]
 
-- Redesigned SSC/QA configuration from Opt-Out to Opt-In architecture, preventing billing exposure for unconfigured customers
-- Developed REST APIs for prediction phrases, bank statement exports, and CRM integrations using Django REST Framework
-- Identified and fixed critical caching bugs (`@cached_property` stale state, LRU + Redis over-caching) validated through systematic test evidence
-- Diagnosed AlloyDB JSONB incompatibility during GCP migration — traced Django ORM SQL generation to specific affected locations with proposed fixes
+- Spotted and fixed a gap between documentation and actual Premium Product configuration implementation on my own initiative, stopping hundreds of customers from using the premium tier for free
+- Found and fixed critical multi-layer caching bugs (`@cached_property` + LRU + Redis over-caching) with systematic test evidence; this had been blocking production readiness of our flagship premium feature for months
+- Built REST APIs for prediction phrases, bank statement Excel exports, and HubSpot CRM integrations with Django REST Framework
 
 === Automation & Internal Tooling #dates-right[2023 – 2024]
 
-- Built *automated customer onboarding system* with HubSpot CRM integration — company provisioning, user management, and branding configuration
-- Rewrote onboarding codebase from procedural to OOP architecture, containerized with Docker, and added CI/CD pipeline
-- Created automated invoice volume reporting and customer data synchronization tools via HubSpot API workflows
-- Developed Cypress + Cucumber E2E testing framework for frontend integration testing
+- Built an *automated customer onboarding system* with HubSpot CRM integration: company provisioning, user management, and branding config. Saved the support team dozens of hours of repetitive work per month
+- Created automated invoice volume reporting and production customer sync through HubSpot API workflow scripts, giving the sales team data they could actually act on
 
 === Technical Support Engineering #dates-right[2022 – 2023]
 
-- Investigated and documented 130+ customer-reported issues with detailed root cause analysis and reproduction steps
-- Identified security vulnerabilities in user permissions and host configuration
-- Filed 76 issues in 2023, improving product quality across UI, backend, and ML prediction accuracy
+- Investigated and documented 130+ customer-reported issues with detailed root cause analysis and reproduction steps, contributing to 147 identified bugs across the full platform
+- Filed 76 issues in 2023 alone, improving product quality across UI, backend, ML prediction accuracy, and security
+- Authored 57 feature requests and 29 UX improvement proposals based on tickets escalated to the 2nd level of support
 
 == Technical Skills
 
 #skills-grid(
-  ("Languages", "Python (Expert) · TypeScript · Dart"),
-  ("Backend", "Django · Django REST Framework · FastAPI · Celery"),
-  ("Frontend", "Angular · RxJS · NgRx · HTML/CSS"),
-  ("AI/ML", "Google Gemini LLM · Prompt Engineering · OCR · MLflow · Document AI"),
-  ("DevOps", "Kubernetes · Helm · Docker · GitLab CI/CD · GitHub Actions"),
-  ("Cloud", "Azure · Google Cloud Platform · AlloyDB · PostgreSQL · Redis"),
-  ("Integrations", "HubSpot API · REST APIs · Camunda · DATEV · UBL/E-Invoice"),
-  ("Observability", "Sentry · OpenTelemetry · Jaeger · Structured Logging"),
+  ("Languages", "Python · TypeScript · SQL · C++"),
+  ("Backend", "Django · Django REST Framework · FastAPI · Celery · PostgreSQL · Redis"),
+  ("AI / ML", "Google Gemini LLM · OCR (Tesseract) · MLflow · Document AI"),
+  ("Cloud & DevOps", "Kubernetes · Helm · Docker · GitLab CI/CD · Azure · GCP · Terraform"),
   ("Testing", "pytest · Cypress · Playwright · k6 · Cucumber/Gherkin"),
-  ("Tools", "Git · Jira · MCP Protocol · Streamlit"),
+  ("Integrations", "HubSpot API · REST APIs · DATEV · UBL/E-Invoice · MCP"),
+  ("Observability", "Sentry · OpenTelemetry · Jaeger · Structured Logging"),
+)
+
+== Key Projects
+
+#project(
+  name: "Conductor Agent",
+  tech: "Markdown Agents · Subagent Spawning · Cursor · Claude Code · VS Code Copilot",
+  description: "Orchestrates the full dev lifecycle from request to reviewed implementation. Routes tasks by complexity, utilizes frontmatter for more optimal subagent model selection, spawns parallel research subagents (codebase, web, git history), generates phased TDD plans with approval gates, and runs iterative Implementer/Reviewer loops with automated revision cycles. Works across Cursor, Claude Code, and VS Code Copilot.",
+)
+
+#project(
+  name: "Finmatics MCP Server",
+  tech: "FastMCP · httpx · Pydantic · tenacity",
+  description: "Custom MCP server for running API and smoke tests against staging/local via natural language. Shared HTTP client via lifespan, JWT auto-refresh, production safety blocklist, and exponential-backoff retry. Works in VS Code Copilot, Claude Code, and Cursor.",
+)
+
+#project(
+  name: "Auto-Onboarding System",
+  tech: "Python · HubSpot Workflow Custom Code Blocks",
+description: "End-to-end customer provisioning automation. CRM integration for company/user creation, branding config, and role assignment, with HubSpot's ticket pipeline repurposed as the UI. Took hours of repetitive work off the support team's plate.",
 )
 
 == Education
 
 #education(
-  degree: "YOUR DEGREE HERE",
-  institution: "YOUR UNIVERSITY HERE",
+  degree: "BSc Informatics (Computer Science)",
+  institution: "TU Wien (Vienna University of Technology)",
   location: "Vienna, Austria",
-  dates: "YYYY – YYYY",
+  dates: "Feb 2026 – Present",
+  details: "Part-time alongside full-time engineering role",
 )
 
 == Languages
 
 #languages(
   ("German", "Native"),
-  ("English", "Fluent (C1–C2)"),
-)
-
-== Key Projects
-
-#project(
-  name: "Agentic Workspace",
-  tech: "Python · MCP · Cursor · Claude Code · VS Code Copilot",
-  description: "Multi-agent AI development platform providing unified pipeline across three AI coding assistants with 8 specialized agents, 11 skills, and custom MCP server for API test automation",
-)
-
-#project(
-  name: "Content Split Service",
-  tech: "FastAPI · Google Gemini · Pydantic · Redis",
-  description: "Production microservice for LLM-powered invoice line item splitting with retry logic, selective caching, and distributed tracing",
-)
-
-#project(
-  name: "Auto-Onboarding System",
-  tech: "Python · HubSpot API · Docker · Kubernetes",
-  description: "Full-stack customer provisioning automation — CRM integration, company/user creation, branding configuration, and CI/CD deployment",
+  ("English", "Bilingual proficiency (C2)"),
+  ("Spanish", "Limited working proficiency (A2)")
 )
