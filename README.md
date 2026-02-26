@@ -1,23 +1,24 @@
-# Maximilian Ipkovich — CV
+<p align="center">
+  <a href="https://github.com/asc-lep-ius/cv/releases/latest/download/cv-en.pdf">
+    <img src="https://github.com/asc-lep-ius/cv/releases/latest/download/preview-1.png" alt="Maximilian Ipkovich — CV" width="800"/>
+  </a>
+</p>
 
-Software Engineer — AI & Platform Engineering | Vienna, Austria
+<p align="center">
+  <a href="https://github.com/asc-lep-ius/cv/releases/latest/download/cv-en.pdf">
+    <img src="https://img.shields.io/badge/Download_PDF-2563eb?style=for-the-badge&logo=adobeacrobatreader&logoColor=white" alt="Download PDF"/>
+  </a>
+</p>
 
-## Download
+---
 
-| Version | Link |
-|---------|------|
-| English PDF | [cv-en.pdf](https://github.com/asc-lep-ius/cv/releases/latest/download/cv-en.pdf) |
+### Build locally
 
-## Preview
+```bash
+# requires typst ≥ 0.14
+make en          # → output/cv-en.pdf
+make png         # → output/preview-*.png
+make watch       # live-reload
+```
 
-![CV Preview](https://github.com/asc-lep-ius/cv/releases/latest/download/preview.png)
-
-## Built With
-
-- [Typst](https://typst.app/) — modern typesetting system
-- Auto-compiled via [GitHub Actions](.github/workflows/build.yml) on every push
-
-## Contact
-
-- [LinkedIn](https://linkedin.com/in/maximilian-ipkovich)
-- [GitHub](https://github.com/asc-lep-ius)
+Built with [Typst](https://typst.app/) · Auto-compiled via [GitHub Actions](.github/workflows/build.yml) on every push
