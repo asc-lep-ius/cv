@@ -1,0 +1,7 @@
+.typst/
+.DS_Store
+Thumbs.db
+.vscode/
+*.swp
+*~
+output/*.png
