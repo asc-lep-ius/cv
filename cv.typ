@@ -1,0 +1,181 @@
+// Maximilian Ipkovich CV
+// Built with Typst · https://typst.app
+
+#import "template.typ": *
+#let compact = sys.inputs.at("compact", default: "false") == "true"
+
+#show: cv.with(
+  name: "Maximilian Ipkovich",
+  tagline: "Software Engineer | AI, Backend & DevOps",
+  contact: (
+    (icon: "envelope", text: "maximilian.ipkovich@gmail.com"),
+    (icon: "phone", text: "+436644075399"),
+    (icon: "location", text: "Vienna, Austria"),
+    (icon: "linkedin", text: "/maximilian-i-ba2a35245"),
+    (icon: "gitlab", text: "gitlab.com/mipkovich"),
+  ),
+  // date-of-birth: "1999.08.23",
+  // nationality: "Austrian",
+  accent-color: rgb("#2563eb"),
+)
+
+#if not compact {
+  metrics-bar(
+    ("56", "Merged MRs"),
+    ("250+", "Issues Authored"),
+    ("500+", "Review Comments"),
+    ("3.5y", "Tenure"),
+  )
+}
+
+== Professional Summary
+
+#if compact [
+  3.5 years at Finmatics (Visma Group), building LLM-integrated microservices, Django backend, and CI/CD. Negotiated from support into a dev role. 500+ review actions. Available from June 2026.
+] else [
+  3.5 years at Finmatics (Visma Group), an Austrian AI/FinTech company automating invoice processing for accounting firms and enterprises. Negotiated from support into a developer role. Now building LLM-integrated microservices (Google Gemini), contributing to the Django monolith backend, and improving CI/CD infrastructure. Created multi-agent AI dev tooling and a custom MCP server for API testing. 500+ review actions, 250+ authored technical specs. Available from June 2026.
+]
+
+== Work Experience
+
+#experience(
+  role: "Developer & Quality Control Engineer",
+  company: "Finmatics GmbH (Visma Group)",
+  location: "Vienna, Austria",
+  dates: "May 2023 – Present",
+  description: "Negotiated transition from Application Support to a dual Developer & QC role. Internal tooling, issue triage, release validation, then backend development, AI/LLM microservices, and CI/CD.",
+)
+
+#if not compact {
+  experience(
+    role: "Application Support Engineer",
+    company: "Finmatics GmbH (Visma Group)",
+    location: "Vienna, Austria",
+    dates: "Sep 2022 – May 2023",
+    description: "2nd level technical support for enterprise accounting clients. Investigated and documented 130+ customer-reported issues with root cause analysis, contributing to 147 identified bugs and 57 feature requests.",
+  )
+}
+
+#if compact {
+  experience(
+    role: "Corporal",
+    company: "Austrian Armed Forces (ÖBH)",
+    location: "Austria · Bosnia-Herzegovina",
+    dates: "Oct 2019 – July 2022",
+    description: "Grundwehrdienst, border operations with policing powers, EUFOR Althea peacekeeping (extended to max 9-month duration).",
+  )
+} else {
+  experience(
+    role: "Private",
+    company: "Austrian Armed Forces (ÖBH)",
+    location: "Austria · Bosnia-Herzegovina",
+    dates: "Oct 2019 – July 2022",
+    description: "Completed mandatory 9-month Grundwehrdienst. Deployed to Austrian border operations with policing powers, intercepting smuggling operations. Volunteered for EUFOR Althea international peacekeeping in Bosnia-Herzegovina and extended to the maximum 9-month duration.",
+  )
+}
+
+=== AI/ML & Microservices #dates-right[2025 – 2026]
+
+- Contributed to the *Content Split Service*, a FastAPI microservice using Google Gemini LLM for automated invoice line item splitting across enterprise invoices
+- Added selective caching, exponential-backoff retries, and proper error propagation to the LLM pipeline, fixing persistent failures caused by transient Gemini API errors
+- Built a testing harness that substantiated a pervasive caching bug causing long-lived workers to silently cache deactivated config; repurposed the harness into regression tests after fixing the root cause
+#if not compact [
+- Set up end-to-end observability: Sentry alerts on failures, InvoiceEvent logging for debugging, OpenTelemetry spans for distributed tracing of retry patterns
+]
+- Created the *Finmatics MCP Server* (14 tools, 2,000+ lines) so AI assistants can run E2E API tests via natural language, replacing manual Postman/curl workflows
+
+=== Platform Engineering & CI/CD #dates-right[2024 – 2026]
+
+- Designed and maintained the *GitLab CI Release Bot*: blocks MRs missing a Jira issue, handles cross-project issue association and deployment validation, cutting manual release overhead for the team
+- Cut CI log volume by ~90% with selective observability config, fixing 10MB log limit truncation that was blocking test debugging
+#if not compact [
+- Contributed to the *Agentic Workspace*, a multi-agent AI dev platform running across Cursor, Claude Code, and VS Code Copilot
+- Built a custom *Conductor Agent* for the full dev lifecycle, features parallel research subagents, phased TDD plans, and iterative Implementer/Reviewer loops
+]
+
+=== Backend Development (Django) #dates-right[2023 – 2026]
+
+- Spotted and fixed a documentation vs. implementation gap in Premium Product config, stopping free usage of the premium tier
+- Found and fixed critical multi-layer caching bugs with test evidence, unblocking production readiness of our flagship feature
+#if not compact [
+- Built REST APIs for prediction phrases, bank statement Excel exports, and HubSpot CRM integrations with Django REST Framework
+]
+
+#if compact [
+  === Tooling & Side Projects #dates-right[2022 – Present]
+
+  - *Sophia* — hexagonal student toolkit for TU Wien: GPU transcription, vector search, LLM topic extraction, FSRS spaced repetition (35k lines, 900+ tests)
+  - *TAME-Swarm* — novel LLM architecture: VCG auction-based expert routing + activation steering (PyTorch · Transformers · FastAPI)
+] else [
+  === Automation & Internal Tooling #dates-right[2023 – 2024]
+
+  - Built an *automated customer onboarding system* with HubSpot CRM integration: company provisioning, user management, and branding config. Saving the support team from hours of recurring repetitive work
+  - Created automated invoice volume reporting and customer sync via HubSpot Workflow Custom Code Blocks, giving the sales team actionable data in the UI they use daily
+
+  === Technical Support Engineering #dates-right[2022 – 2023]
+
+  - Investigated and documented 130+ customer-reported issues with root cause analysis, contributing to 147 identified bugs across the platform
+  - Filed 76 issues in 2023 alone, improving product quality across UI, backend, ML prediction accuracy, and security
+  - Authored 57 feature requests and 29 UX improvement proposals based on escalated support tickets
+]
+
+== Technical Skills
+
+#if compact {
+  skills-grid(
+    ("Languages", "Python · TypeScript · SQL · C++ (Unreal Engine)"),
+    ("Backend", "Django · DRF · FastAPI · Celery · PostgreSQL · Redis"),
+    ("AI / ML", "Google Gemini LLM · PyTorch · Hugging Face Transformers · Activation Steering"),
+    ("Cloud & DevOps", "Kubernetes · Helm · Docker · GitLab CI/CD · Azure · GCP · Terraform"),
+    ("Testing & Obs.", "pytest · Cypress · Playwright · Sentry · OpenTelemetry"),
+  )
+} else {
+  skills-grid(
+    ("Languages", "Python · TypeScript · SQL · C++ (Unreal Engine)"),
+    ("Backend", "Django · Django REST Framework · FastAPI · Celery · PostgreSQL · Redis"),
+    ("AI / ML", "Google Gemini LLM · PyTorch · Hugging Face Transformers · Activation Steering · OCR (Tesseract)"),
+    ("Cloud & DevOps", "Kubernetes · Helm · Docker · GitLab CI/CD · Azure · Azure Entra ID · GCP · Terraform"),
+    ("Testing", "pytest · Cypress · Playwright · k6 · Cucumber/Gherkin"),
+    ("Integrations", "HubSpot API · REST APIs · DATEV · UBL/E-Invoice · MCP"),
+    ("Observability", "Sentry · OpenTelemetry · Jaeger · Structured Logging"),
+  )
+}
+
+#if not compact [
+  == Key Projects
+
+  #project(
+    name: "TAME-Swarm",
+    tech: "PyTorch · Transformers · FastAPI · Gradio · Docker",
+    description: "Novel LLM architecture grounded in Michael Levin's TAME framework. VCG auction-based expert routing replaces standard MoE gating for emergent specialization. Activation steering vectors for drift-resistant alignment. Working prototype on Gemma-2B/Mistral-7B. 3,000+ lines.",
+  )
+
+  #project(
+    name: "Finmatics MCP Server",
+    tech: "FastMCP · httpx · Pydantic · tenacity",
+    description: "Custom MCP server for running API and smoke tests against staging/local via natural language. Shared HTTP client, JWT auto-refresh, production safety blocklist, exponential-backoff retry. Works across VS Code Copilot, Claude Code, and Cursor.",
+  )
+
+  #project(
+    name: "Sophia (σοφία)",
+    tech: "Python · httpx · ChromaDB · faster-whisper · Gemini/Groq/Ollama · aiosqlite · structlog · rich",
+    description: "Constructivist student toolkit for TU Wien. Hexagonal architecture with 11 Protocol interfaces and async-first design. GPU-accelerated lecture transcription, semantic vector search (ChromaDB), multi-provider LLM integration (Gemini/Groq/Ollama), FSRS spaced repetition. 35,000+ lines, 900+ tests, GitLab CI.",
+  )
+]
+
+== Education
+
+#education(
+  degree: "BSc Informatics (Computer Science)",
+  institution: "TU Wien (Vienna University of Technology)",
+  location: "Vienna, Austria",
+  dates: "Feb 2026 – Present (expected 2029)",
+  details: "Part-time alongside full-time engineering role",
+)
+
+== Languages
+
+#languages(
+  ("German", "Native"),
+  ("English", "Bilingual proficiency (C2)"),
+)
