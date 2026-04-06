@@ -135,7 +135,24 @@
 
 == Technical Skills
 
-#if compact {
+#if ai and compact {
+  skills-grid(
+    ("AI / ML & Agents", "RAG Pipelines · ChromaDB · LightRAG · Google Gemini · PyTorch · Transformers · Pydantic Structured Output · Prompt Engineering · Multi-Agent Orchestration · MCP Protocol · Activation Steering"),
+    ("Backend & APIs", "FastAPI · Django · DRF · SQLModel · Celery · PostgreSQL · Redis"),
+    ("Cloud & MLOps", "Docker · Kubernetes · Helm · GitLab CI/CD · Azure · GCP · Terraform · Sentry · OpenTelemetry"),
+    ("Testing", "pytest · Playwright · Cypress · k6 · structured evaluation"),
+    ("Languages", "Python · TypeScript · SQL"),
+  )
+} else if ai {
+  skills-grid(
+    ("AI / ML & Agents", "RAG Pipelines · ChromaDB · LightRAG · Sentence Transformers · Google Gemini LLM · PyTorch · Hugging Face Transformers · Activation Steering · Pydantic Structured Output · Prompt Engineering · Multi-Agent Orchestration · MCP Protocol · FSRS"),
+    ("Backend & APIs", "FastAPI · Django · DRF · SQLModel · Celery · PostgreSQL · Redis"),
+    ("Cloud & MLOps", "Docker · Kubernetes · Helm · GitLab CI/CD · Azure · Azure Entra ID · GCP · Terraform"),
+    ("Testing & Eval.", "pytest · Playwright · Cypress · k6 · Cucumber/Gherkin · structured evaluation pipelines"),
+    ("Observability", "Sentry · OpenTelemetry · Jaeger · Structured Logging"),
+    ("Languages", "Python · TypeScript · SQL"),
+  )
+} else if compact {
   skills-grid(
     ("Languages", "Python · TypeScript · SQL · C++ (Unreal Engine)"),
     ("Backend", "Django · DRF · FastAPI · SQLModel · Celery · PostgreSQL · Redis"),
