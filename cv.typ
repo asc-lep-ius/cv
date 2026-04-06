@@ -115,7 +115,14 @@
 - Built REST APIs for prediction phrases, bank statement Excel exports, and HubSpot CRM integrations with Django REST Framework
 ]
 
-#if compact [
+#if compact and ai [
+  === AI Projects & Research #dates-right[2022 – Present]
+
+  - *TAME-Swarm* — novel LLM architecture: VCG auction-based expert routing + activation steering (PyTorch · Transformers)
+  - *Athena* — RAG pipeline: books/PDFs → knowledge graphs with Pydantic-validated LLM structured output (LightRAG · Claude)
+  - *Sophia* — student toolkit: GPU transcription, vector search, multi-LLM integration, FSRS (35k lines, 1,530+ tests)
+  - *Conductor Agent* — multi-agent dev orchestrator: 8 subagents, parallel worktree execution, GitLab audit trail
+] else if compact [
   === Tooling & Side Projects #dates-right[2022 – Present]
 
   - *Sophia* — hexagonal student toolkit for TU Wien: GPU transcription, vector search, LLM topic extraction, FSRS spaced repetition (35k lines, 1,530+ tests)
@@ -172,7 +179,41 @@
   )
 }
 
-#if not compact [
+#if ai [
+  == Key Projects
+
+  #project(
+    name: "TAME-Swarm",
+    tech: "PyTorch · Transformers · FastAPI · Gradio · Docker",
+    description: "Novel LLM architecture grounded in Michael Levin's TAME framework. Proposes VCG auction-based expert routing as a replacement for standard MoE gating, enabling emergent specialization through mechanism design. Activation steering vectors for drift-resistant alignment. Working prototype on Gemma-2B/Mistral-7B. 3,000+ lines.",
+  )
+
+  #project(
+    name: "Conductor Agent",
+    tech: "VS Code Copilot · Claude API · GitLab MCP · Markdown Agent DSL",
+    description: "Multi-agent orchestration system for the full software development lifecycle, implemented within the Finmatics Agentic Workspace. 8 specialized subagents (Investigator, Planner, Implementer, Reviewer), 11 composable skills, parallel git-worktree execution for concurrent development phases, and automated GitLab audit trail. Production use across VS Code Copilot.",
+  )
+
+  #project(
+    name: "Athena",
+    tech: "Python · LightRAG · Marker · Claude API · Pydantic · Rich TUI",
+    description: "RAG pipeline transforming technical books and PDFs into structured design constraints and knowledge graphs. 5-layer architecture (Parse → Graph → Analyze → Derive → Review) with Pydantic-validated LLM structured output at each stage. 7,000+ lines.",
+  )
+
+  #project(
+    name: "Sophia (σοφία)",
+    tech: "Python · ChromaDB · faster-whisper · Gemini/Groq/Ollama · Sentence Transformers · aiosqlite",
+    description: "Constructivist student toolkit for TU Wien. Hexagonal architecture with 11 Protocol interfaces. GPU-accelerated lecture transcription, semantic vector search (ChromaDB), multi-provider LLM integration (Gemini/Groq/Ollama), FSRS spaced repetition. 35,000+ lines, 1,530+ tests, GitLab CI.",
+  )
+
+  #if not compact {
+    project(
+      name: "Finmatics MCP Server",
+      tech: "FastMCP · httpx · Pydantic · tenacity",
+      description: "Custom MCP server enabling AI assistants to run E2E API tests via natural language — replacing manual Postman/curl workflows. JWT auto-refresh, production safety blocklist, exponential-backoff retry. 14 tools, 2,000+ lines.",
+    )
+  }
+] else if not compact [
   == Key Projects
 
   #project(
