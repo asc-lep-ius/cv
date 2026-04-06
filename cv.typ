@@ -33,7 +33,7 @@
 #if compact [
   3.5 years at Finmatics (Visma Group), building LLM-integrated microservices, Django backend, and CI/CD. Negotiated from support into a dev role. 500+ review actions. Available from June 2026.
 ] else [
-  3.5 years at Finmatics (Visma Group), an Austrian AI/FinTech company automating invoice processing for accounting firms and enterprises. Negotiated from support into a developer role. Now building LLM-integrated microservices (Google Gemini), contributing to the Django monolith backend, and improving CI/CD infrastructure. Created multi-agent AI dev tooling and a custom MCP server for API testing. 500+ review actions, 250+ authored technical specs. Available from June 2026.
+  3.5 years at Finmatics (Visma Group), an Austrian AI/FinTech company automating invoice processing for enterprises. Evolved from support into a developer role building LLM-integrated microservices (Google Gemini), Django backend, and CI/CD infrastructure. Implemented multi-agent dev tooling and a custom MCP server for AI-assisted API testing. 6 personal projects totalling 35,000+ lines and 1,530+ tests across RAG pipelines, multi-agent architectures, and full-stack applications. Available from June 2026.
 ]
 
 == Work Experience
@@ -66,11 +66,11 @@
   )
 } else {
   experience(
-    role: "Private",
+    role: "Corporal",
     company: "Austrian Armed Forces (ÖBH)",
     location: "Austria · Bosnia-Herzegovina",
     dates: "Oct 2019 – July 2022",
-    description: "Completed mandatory 9-month Grundwehrdienst. Deployed to Austrian border operations with policing powers, intercepting smuggling operations. Volunteered for EUFOR Althea international peacekeeping in Bosnia-Herzegovina and extended to the maximum 9-month duration.",
+    description: "Grundwehrdienst, Austrian border operations with policing powers, EUFOR Althea international peacekeeping in Bosnia-Herzegovina (volunteered, extended to max duration).",
   )
 }
 
@@ -104,7 +104,7 @@
 #if compact [
   === Tooling & Side Projects #dates-right[2022 – Present]
 
-  - *Sophia* — hexagonal student toolkit for TU Wien: GPU transcription, vector search, LLM topic extraction, FSRS spaced repetition (35k lines, 900+ tests)
+  - *Sophia* — hexagonal student toolkit for TU Wien: GPU transcription, vector search, LLM topic extraction, FSRS spaced repetition (35k lines, 1,530+ tests)
   - *TAME-Swarm* — novel LLM architecture: VCG auction-based expert routing + activation steering (PyTorch · Transformers · FastAPI)
 ] else [
   === Automation & Internal Tooling #dates-right[2023 – 2024]
@@ -124,19 +124,19 @@
 #if compact {
   skills-grid(
     ("Languages", "Python · TypeScript · SQL · C++ (Unreal Engine)"),
-    ("Backend", "Django · DRF · FastAPI · Celery · PostgreSQL · Redis"),
-    ("AI / ML", "Google Gemini LLM · PyTorch · Hugging Face Transformers · Activation Steering"),
+    ("Backend", "Django · DRF · FastAPI · SQLModel · Celery · PostgreSQL · Redis"),
+    ("AI / ML", "Google Gemini LLM · RAG · ChromaDB · PyTorch · Transformers · Pydantic Structured Output"),
     ("Cloud & DevOps", "Kubernetes · Helm · Docker · GitLab CI/CD · Azure · GCP · Terraform"),
     ("Testing & Obs.", "pytest · Cypress · Playwright · Sentry · OpenTelemetry"),
   )
 } else {
   skills-grid(
     ("Languages", "Python · TypeScript · SQL · C++ (Unreal Engine)"),
-    ("Backend", "Django · Django REST Framework · FastAPI · Celery · PostgreSQL · Redis"),
-    ("AI / ML", "Google Gemini LLM · PyTorch · Hugging Face Transformers · Activation Steering · OCR (Tesseract)"),
+    ("Backend", "Django · DRF · FastAPI · SQLModel · Celery · PostgreSQL · Redis"),
+    ("AI / ML", "Google Gemini LLM · RAG · ChromaDB · Sentence Transformers · PyTorch · Hugging Face Transformers · Pydantic Structured Output · Prompt Engineering"),
     ("Cloud & DevOps", "Kubernetes · Helm · Docker · GitLab CI/CD · Azure · Azure Entra ID · GCP · Terraform"),
     ("Testing", "pytest · Cypress · Playwright · k6 · Cucumber/Gherkin"),
-    ("Integrations", "HubSpot API · REST APIs · DATEV · UBL/E-Invoice · MCP"),
+    ("Integrations", "HubSpot API · REST APIs · DATEV · UBL/E-Invoice · MCP Protocol · CalDAV"),
     ("Observability", "Sentry · OpenTelemetry · Jaeger · Structured Logging"),
   )
 }
@@ -147,19 +147,19 @@
   #project(
     name: "TAME-Swarm",
     tech: "PyTorch · Transformers · FastAPI · Gradio · Docker",
-    description: "Novel LLM architecture grounded in Michael Levin's TAME framework. VCG auction-based expert routing replaces standard MoE gating for emergent specialization. Activation steering vectors for drift-resistant alignment. Working prototype on Gemma-2B/Mistral-7B. 3,000+ lines.",
+    description: "Novel LLM architecture grounded in Michael Levin's TAME framework. Proposes VCG auction-based expert routing as a replacement for standard MoE gating, enabling emergent specialization through mechanism design. Activation steering vectors for drift-resistant alignment. Working prototype on Gemma-2B/Mistral-7B. 3,000+ lines.",
   )
 
   #project(
     name: "Finmatics MCP Server",
     tech: "FastMCP · httpx · Pydantic · tenacity",
-    description: "Custom MCP server for running API and smoke tests against staging/local via natural language. Shared HTTP client, JWT auto-refresh, production safety blocklist, exponential-backoff retry. Works across VS Code Copilot, Claude Code, and Cursor.",
+    description: "Custom MCP server enabling AI assistants to run E2E API and smoke tests against staging/local via natural language — replacing manual Postman/curl workflows for the team. Shared HTTP client, JWT auto-refresh, production safety blocklist, exponential-backoff retry. 14 tools, 2,000+ lines.",
   )
 
   #project(
     name: "Sophia (σοφία)",
     tech: "Python · httpx · ChromaDB · faster-whisper · Gemini/Groq/Ollama · aiosqlite · structlog · rich",
-    description: "Constructivist student toolkit for TU Wien. Hexagonal architecture with 11 Protocol interfaces and async-first design. GPU-accelerated lecture transcription, semantic vector search (ChromaDB), multi-provider LLM integration (Gemini/Groq/Ollama), FSRS spaced repetition. 35,000+ lines, 900+ tests, GitLab CI.",
+    description: "Constructivist student toolkit for TU Wien. Hexagonal architecture with 11 Protocol interfaces and async-first design. GPU-accelerated lecture transcription, semantic vector search (ChromaDB), multi-provider LLM integration (Gemini/Groq/Ollama), FSRS spaced repetition. 35,000+ lines, 1,530+ tests, GitLab CI.",
   )
 ]
 
