@@ -27,6 +27,8 @@ pages:
     - mkdir -p public
     - cp output/cv-en.pdf public/
     - cp output/cv-en-1page.pdf public/
+    - cp output/cv-ai.pdf public/
+    - cp output/cv-ai-compact.pdf public/
     - cp output/preview-*.png public/
   artifacts:
     paths:
@@ -62,6 +64,12 @@ release:
           link_type: other
         - name: cv-en-1page.pdf
           url: ${CI_PAGES_URL}/cv-en-1page.pdf
+          link_type: other
+        - name: cv-ai.pdf
+          url: ${CI_PAGES_URL}/cv-ai.pdf
+          link_type: other
+        - name: cv-ai-compact.pdf
+          url: ${CI_PAGES_URL}/cv-ai-compact.pdf
           link_type: other
   rules:
     - if: $CI_COMMIT_BRANCH == "main"

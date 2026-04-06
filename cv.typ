@@ -3,6 +3,7 @@
 
 #import "template.typ": *
 #let compact = sys.inputs.at("compact", default: "false") == "true"
+#let ai = sys.inputs.at("ai", default: "false") == "true"
 
 #show: cv.with(
   name: "Maximilian Ipkovich",
