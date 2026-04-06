@@ -7,7 +7,7 @@
 
 #show: cv.with(
   name: "Maximilian Ipkovich",
-  tagline: "Software Engineer | AI, Backend & DevOps",
+  tagline: if ai { "AI Engineer | LLM Systems, Multi-Agent Architecture & Production ML" } else { "Software Engineer | AI, Backend & DevOps" },
   contact: (
     (icon: "envelope", text: "maximilian.ipkovich@gmail.com"),
     (icon: "phone", text: "+436644075399"),
@@ -21,17 +21,30 @@
 )
 
 #if not compact {
-  metrics-bar(
-    ("56", "Merged MRs"),
-    ("250+", "Issues Authored"),
-    ("500+", "Review Comments"),
-    ("3.5y", "Tenure"),
-  )
+  if ai {
+    metrics-bar(
+      ("3.5y", "AI/FinTech"),
+      ("6+", "AI Projects"),
+      ("35k+", "Lines of Code"),
+      ("1,530+", "Tests"),
+    )
+  } else {
+    metrics-bar(
+      ("56", "Merged MRs"),
+      ("250+", "Issues Authored"),
+      ("500+", "Review Comments"),
+      ("3.5y", "Tenure"),
+    )
+  }
 }
 
 == Professional Summary
 
-#if compact [
+#if ai and compact [
+  AI Engineer with 3.5 years at Finmatics (Visma Group), building LLM-integrated microservices (Google Gemini), multi-agent dev tooling, and RAG pipelines. Implemented a Conductor agent orchestrating 8 subagents for the full dev lifecycle. 6 personal AI/ML projects totalling 35,000+ lines. Available from June 2026.
+] else if ai [
+  3.5 years at Finmatics (Visma Group), building LLM-integrated microservices with Google Gemini for automated invoice processing. Implemented multi-agent development tooling — a Conductor agent orchestrating 8 specialized subagents with parallel execution and GitLab audit trail. Personal project portfolio spans RAG pipelines (Athena — knowledge graph extraction with LightRAG), novel multi-agent LLM architectures (TAME-Swarm — VCG auction-based expert routing with PyTorch), and a full-stack student toolkit with vector search and multi-provider LLM integration (Sophia — 35,000+ lines, 1,530+ tests). Available from June 2026.
+] else if compact [
   3.5 years at Finmatics (Visma Group), building LLM-integrated microservices, Django backend, and CI/CD. Negotiated from support into a dev role. 500+ review actions. Available from June 2026.
 ] else [
   3.5 years at Finmatics (Visma Group), an Austrian AI/FinTech company automating invoice processing for enterprises. Evolved from support into a developer role building LLM-integrated microservices (Google Gemini), Django backend, and CI/CD infrastructure. Implemented multi-agent dev tooling and a custom MCP server for AI-assisted API testing. 6 personal projects totalling 35,000+ lines and 1,530+ tests across RAG pipelines, multi-agent architectures, and full-stack applications. Available from June 2026.
