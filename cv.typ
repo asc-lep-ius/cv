@@ -60,7 +60,7 @@
   description: "Negotiated transition from Application Support to a dual Developer & QC role. Internal tooling, issue triage, release validation, then backend development, AI/LLM microservices, and CI/CD.",
 )
 
-#if not compact {
+#if not compact and not ai {
   experience(
     role: "Application Support Engineer",
     company: "Finmatics GmbH (Visma Group)",
@@ -70,7 +70,15 @@
   )
 }
 
-#if compact {
+#if ai {
+  experience(
+    role: "Corporal",
+    company: "Austrian Armed Forces (ÖBH)",
+    location: "Austria · Bosnia-Herzegovina",
+    dates: "Oct 2019 – July 2022",
+    description: "Grundwehrdienst, border policing operations, EUFOR Althea international peacekeeping (volunteered, extended to max duration).",
+  )
+} else if compact {
   experience(
     role: "Corporal",
     company: "Austrian Armed Forces (ÖBH)",
@@ -88,31 +96,66 @@
   )
 }
 
-=== AI/ML & Microservices #dates-right[2025 – 2026]
+#if ai [
+  === AI/ML & Agent Systems #dates-right[2025 – 2026]
 
-- Contributed to the *Content Split Service*, a FastAPI microservice using Google Gemini LLM for automated invoice line item splitting across enterprise invoices
-- Added selective caching, exponential-backoff retries, and proper error propagation to the LLM pipeline, fixing persistent failures caused by transient Gemini API errors
-- Built a testing harness that substantiated a pervasive caching bug causing long-lived workers to silently cache deactivated config; repurposed the harness into regression tests after fixing the root cause
-#if not compact [
-- Set up end-to-end observability: Sentry alerts on failures, InvoiceEvent logging for debugging, OpenTelemetry spans for distributed tracing of retry patterns
+  - Contributed to the *Content Split Service*, a FastAPI microservice using Google Gemini LLM for automated invoice line item splitting with Pydantic-validated structured output
+  - Added selective caching, exponential-backoff retries, and proper error propagation to the LLM pipeline, fixing persistent failures caused by transient Gemini API errors
+  - Built a testing harness that uncovered a pervasive caching bug in long-lived workers; repurposed the harness into regression tests after fixing the root cause
+  #if not compact [
+  - Set up end-to-end observability: Sentry alerts on failures, InvoiceEvent logging for debugging, OpenTelemetry spans for distributed tracing of retry patterns
+  ]
+  - Created the *Finmatics MCP Server* (14 tools, 2,000+ lines) enabling AI assistants to run E2E API tests via natural language — replacing manual Postman/curl workflows for the team
+] else [
+  === AI/ML & Microservices #dates-right[2025 – 2026]
+
+  - Contributed to the *Content Split Service*, a FastAPI microservice using Google Gemini LLM for automated invoice line item splitting across enterprise invoices
+  - Added selective caching, exponential-backoff retries, and proper error propagation to the LLM pipeline, fixing persistent failures caused by transient Gemini API errors
+  - Built a testing harness that substantiated a pervasive caching bug causing long-lived workers to silently cache deactivated config; repurposed the harness into regression tests after fixing the root cause
+  #if not compact [
+  - Set up end-to-end observability: Sentry alerts on failures, InvoiceEvent logging for debugging, OpenTelemetry spans for distributed tracing of retry patterns
+  ]
+  - Created the *Finmatics MCP Server* (14 tools, 2,000+ lines) so AI assistants can run E2E API tests via natural language, replacing manual Postman/curl workflows
 ]
-- Created the *Finmatics MCP Server* (14 tools, 2,000+ lines) so AI assistants can run E2E API tests via natural language, replacing manual Postman/curl workflows
 
-=== Platform Engineering & CI/CD #dates-right[2024 – 2026]
+#if ai [
+  === Agent Infrastructure & Dev Tooling #dates-right[2024 – 2026]
 
-- Designed and maintained the *GitLab CI Release Bot*: blocks MRs missing a Jira issue, handles cross-project issue association and deployment validation, cutting manual release overhead for the team
-- Cut CI log volume by ~90% with selective observability config, fixing 10MB log limit truncation that was blocking test debugging
-#if not compact [
-- Extended the team's *Agentic Workspace* to VS Code Copilot and integrated the Finmatics API MCP server alongside existing Cursor and Claude Code support
-- Implemented a *Conductor Agent* within the Agentic Workspace: 8 specialized subagents, 11 skills, parallel worktree execution, and automated GitLab audit trail for the full dev lifecycle
+  - Extended the team's *Agentic Workspace* to VS Code Copilot and integrated the Finmatics API MCP server alongside existing Cursor and Claude Code support
+  - Implemented a *Conductor Agent* within the Agentic Workspace: 8 specialized subagents (Investigator, Planner, Implementer, Reviewer), 11 composable skills, parallel git-worktree execution, and automated GitLab audit trail
+  - Contributed an approved PR to the open-source *GitLab-MCP* npm package, extending its MCP server capabilities for AI-agent GitLab integration
+  #if not compact [
+  - Designed and maintained the *GitLab CI Release Bot*: blocks MRs missing a Jira issue, cross-project issue association, deployment validation — cutting manual release overhead
+  - Cut CI log volume by ~90% with selective observability config, fixing 10MB log limit truncation blocking test debugging
+  ]
+] else [
+  === Platform Engineering & CI/CD #dates-right[2024 – 2026]
+
+  - Designed and maintained the *GitLab CI Release Bot*: blocks MRs missing a Jira issue, handles cross-project issue association and deployment validation, cutting manual release overhead for the team
+  - Cut CI log volume by ~90% with selective observability config, fixing 10MB log limit truncation that was blocking test debugging
+  #if not compact [
+  - Extended the team's *Agentic Workspace* to VS Code Copilot and integrated the Finmatics API MCP server alongside existing Cursor and Claude Code support
+  - Implemented a *Conductor Agent* within the Agentic Workspace: 8 specialized subagents, 11 skills, parallel worktree execution, and automated GitLab audit trail for the full dev lifecycle
+  ]
 ]
 
-=== Backend Development (Django) #dates-right[2023 – 2026]
+#if ai [
+  === Backend & Automation #dates-right[2023 – 2025]
 
-- Spotted and fixed a documentation vs. implementation gap in Premium Product config, stopping free usage of the premium tier
-- Found and fixed critical multi-layer caching bugs with test evidence, unblocking production readiness of our flagship feature
-#if not compact [
-- Built REST APIs for prediction phrases, bank statement Excel exports, and HubSpot CRM integrations with Django REST Framework
+  - Spotted and fixed a documentation vs. implementation gap in Premium Product config, stopping free usage of the premium tier
+  - Found and fixed critical multi-layer caching bugs with test evidence, unblocking production readiness of the flagship feature
+  #if not compact [
+  - Built REST APIs for prediction phrases, bank statement Excel exports, and HubSpot CRM integrations with Django REST Framework
+  - Built automated customer onboarding with HubSpot CRM integration: company provisioning, user management, branding config
+  ]
+] else [
+  === Backend Development (Django) #dates-right[2023 – 2026]
+
+  - Spotted and fixed a documentation vs. implementation gap in Premium Product config, stopping free usage of the premium tier
+  - Found and fixed critical multi-layer caching bugs with test evidence, unblocking production readiness of our flagship feature
+  #if not compact [
+  - Built REST APIs for prediction phrases, bank statement Excel exports, and HubSpot CRM integrations with Django REST Framework
+  ]
 ]
 
 #if compact and ai [
