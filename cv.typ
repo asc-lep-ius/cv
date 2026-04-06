@@ -89,8 +89,8 @@
 - Designed and maintained the *GitLab CI Release Bot*: blocks MRs missing a Jira issue, handles cross-project issue association and deployment validation, cutting manual release overhead for the team
 - Cut CI log volume by ~90% with selective observability config, fixing 10MB log limit truncation that was blocking test debugging
 #if not compact [
-- Contributed to the *Agentic Workspace*, a multi-agent AI dev platform running across Cursor, Claude Code, and VS Code Copilot
-- Built a custom *Conductor Agent* for the full dev lifecycle, features parallel research subagents, phased TDD plans, and iterative Implementer/Reviewer loops
+- Extended the team's *Agentic Workspace* to VS Code Copilot and integrated the Finmatics API MCP server alongside existing Cursor and Claude Code support
+- Implemented a *Conductor Agent* within the Agentic Workspace: 8 specialized subagents, 11 skills, parallel worktree execution, and automated GitLab audit trail for the full dev lifecycle
 ]
 
 === Backend Development (Django) #dates-right[2023 – 2026]
