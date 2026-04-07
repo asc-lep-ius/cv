@@ -1,0 +1,75 @@
+stages:
+  - build
+  - publish
+
+build:
+  stage: build
+  image:
+    name: ghcr.io/typst/typst:0.14.2
+    entrypoint: [""]
+  before_script:
+    - apk add --no-cache make
+  script:
+    - make all
+  retry: 1
+  artifacts:
+    paths:
+      - output/
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+
+pages:
+  stage: publish
+  image: alpine:3.19
+  dependencies:
+    - build
+  script:
+    - mkdir -p public
+    - cp output/cv-en.pdf public/
+    - cp output/cv-en-1page.pdf public/
+    - cp output/cv-ai.pdf public/
+    - cp output/cv-ai-compact.pdf public/
+    - cp output/preview-*.png public/
+  artifacts:
+    paths:
+      - public/
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+
+release:
+  stage: publish
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  dependencies:
+    - build
+  before_script:
+    - apk add --no-cache curl
+    - >-
+      curl --silent --request DELETE
+      --header "JOB-TOKEN: ${CI_JOB_TOKEN}"
+      "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/releases/latest" || true
+    - >-
+      curl --silent --request DELETE
+      --header "JOB-TOKEN: ${CI_JOB_TOKEN}"
+      "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/repository/tags/latest" || true
+  script:
+    - echo "Creating release"
+  release:
+    tag_name: latest
+    name: Latest CV
+    description: "Auto-built CV PDFs"
+    assets:
+      links:
+        - name: cv-en.pdf
+          url: ${CI_PAGES_URL}/cv-en.pdf
+          link_type: other
+        - name: cv-en-1page.pdf
+          url: ${CI_PAGES_URL}/cv-en-1page.pdf
+          link_type: other
+        - name: cv-ai.pdf
+          url: ${CI_PAGES_URL}/cv-ai.pdf
+          link_type: other
+        - name: cv-ai-compact.pdf
+          url: ${CI_PAGES_URL}/cv-ai-compact.pdf
+          link_type: other
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
